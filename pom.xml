@@ -16,6 +16,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
         <maven.compiler.target>1.7</maven.compiler.target>
+        <fabric-chaincode-shim.version>2.4.1</fabric-chaincode-shim.version>
     </properties>
 
     <dependencies>
@@ -28,7 +29,7 @@
         <dependency>
             <groupId>org.hyperledger.fabric-chaincode-java</groupId>
             <artifactId>fabric-chaincode-shim</artifactId>
-            <version>2.4.1</version>
+            <version>${fabric-chaincode-shim.version}</version>
         </dependency>
     </dependencies>
 
@@ -41,7 +42,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.hyperledger.fabric.contract.ContractRouter</mainClass>
+                            <mainClass>org.chaincode.externalserver.ExternalChaincode</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -56,7 +57,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>org.hyperledger.fabric.contract.ContractRouter</mainClass>
+                            <mainClass>org.chaincode.externalserver.ExternalChaincode</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
@@ -69,6 +70,14 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>8</source>
+                    <target>8</target>
+                </configuration>
             </plugin>
         </plugins>
         <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->

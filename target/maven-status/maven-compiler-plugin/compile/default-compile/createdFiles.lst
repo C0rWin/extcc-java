@@ -1,1 +1,2 @@
 org/chaincode/service/ChaincodeApp.class
+org/chaincode/externalserver/ExternalChaincode.class
